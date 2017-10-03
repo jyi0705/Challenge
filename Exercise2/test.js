@@ -1,12 +1,9 @@
-
 const { expect, should } = require('chai')
 const fs = require('fs')
 require('./index.js')
 
 describe('Exercise 2 Test', () => {
-  before(() => {
-    fs.unlinkSync('modules.json')
-  })
+
   it('myRequire and myDefine should live in the global namespace', () => {
     expect(global.myDefine).to.not.equal(undefined)
     expect(global.myRequire).to.not.equal(undefined)
@@ -17,11 +14,20 @@ describe('Exercise 2 Test', () => {
     expect((typeof global.myRequire)).to.equal('function')
   })
   it('myDefine should create a modules.json file when defining a function if modules.json does not exist and add the function to the module', () => {
-    expect(fs.existsSync('modules.json')).to.equal(false)
-    myDefine('sum', (a, b) => a + b)
+    let isFile = fs.existsSync('modules.json')
     setTimeout(() => {
-      expect(fs.existsSync('modules.json')).to.equal(true)
+      if(isFile) {
+        fs.unlinkSync('modules.json')
+      }
+      setTimeout(() => {
+        expect(isFile).to.equal(false)
+        myDefine('sum', (a, b) => a + b)
+        setTimeout(() => {
+          expect(fs.existsSync('modules.json')).to.equal(true)
+        }, 5000)
+      }, 5000)
     }, 5000)
+
   })
   it('myRequire should return a function', () => {
     myDefine('func', (a, b) => a * b)

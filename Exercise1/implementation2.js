@@ -1,3 +1,6 @@
+/**
+  * Implementation #1
+  */
 const instance2 = () => {
 
   const root = 'https://jsonplaceholder.typicode.com'
