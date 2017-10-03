@@ -1,0 +1,25 @@
+{
+  "name": "Challenge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha Exercise2/test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jyi0705/Challenge.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jyi0705/Challenge/issues"
+  },
+  "homepage": "https://github.com/jyi0705/Challenge#readme",
+  "dependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^3.5.3",
+    "moment": "^2.18.1"
+  }
+}
